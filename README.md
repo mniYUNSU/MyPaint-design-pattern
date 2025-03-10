@@ -1,0 +1,1 @@
+# MyPaint-design-pattern
