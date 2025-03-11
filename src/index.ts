@@ -1,5 +1,19 @@
-import MyPaint from './mypaint.js';
+import IEMyPaint from './IEMyPaint.js';
+import ChromeMyPaint from './ChromeMyPaint.js';
+
+function myPaintFactory(type: string) {
+  if (type === 'ie') {
+    return IEMyPaint.getInstance();
+  } else if (type === 'chrome') {
+    return ChromeMyPaint.getInstance();
+  } else {
+    throw new Error('NO TYPE');
+  }
+}
 
 function main() {
-  MyPaint.getInstance().initialize();
+  myPaintFactory('ie');
+  myPaintFactory('chrome');
 }
+
+main();
