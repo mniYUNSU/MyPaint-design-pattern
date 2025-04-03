@@ -1,14 +1,11 @@
-class ChromeMyPaint {
-  private static instance: ChromeMyPaint;
-  private constructor(canvas: HTMLElement | null) {
-    if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
-      throw new Error('canvas 엘리먼트를 입력하세요.');
-    }
-  }
-  initialize() {}
-  initializeMenu() {}
+import MyPaint from './AbstractMyPaint';
 
-  static getInstance() {
+class ChromeMyPaint extends MyPaint {
+  private static instance: ChromeMyPaint;
+
+  initialize() {}
+
+  static override getInstance() {
     if (!this.instance) {
       this.instance = new ChromeMyPaint(document.querySelector('#canvas'));
     }

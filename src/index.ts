@@ -1,19 +1,13 @@
-import IEMyPaint from './IEMyPaint.js';
-import ChromeMyPaint from './ChromeMyPaint.js';
-
-function myPaintFactory(type: string) {
-  if (type === 'ie') {
-    return IEMyPaint.getInstance();
-  } else if (type === 'chrome') {
-    return ChromeMyPaint.getInstance();
-  } else {
-    throw new Error('NO TYPE');
-  }
-}
+import { ChromeMyPaintFactory } from './MyPaintFactory.js';
 
 function main() {
-  myPaintFactory('ie');
-  myPaintFactory('chrome');
+  const factory = ChromeMyPaintFactory;
+  const myPaint = factory.createMyPaint();
+  const myPaintMenu = factory.createMyPaintMenu(myPaint);
+  const myPaintHistory = factory.createMyPaintHistory(myPaint);
+  myPaint.initialize();
+  myPaintMenu.initialize();
+  myPaintHistory.initialize();
 }
 
 main();

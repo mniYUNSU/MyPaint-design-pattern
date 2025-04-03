@@ -1,14 +1,11 @@
-class IEMyPaint {
-  private static instance: IEMyPaint;
-  private constructor(canvas: HTMLElement | null) {
-    if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
-      throw new Error('canvas 엘리먼트를 입력하세요.');
-    }
-  }
-  initialize() {}
-  initializeMenu() {}
+import MyPaint from './AbstractMyPaint';
 
-  static getInstance() {
+class IEMyPaint extends MyPaint {
+  private static instance: IEMyPaint;
+
+  initialize() {}
+
+  static override getInstance() {
     if (!this.instance) {
       this.instance = new IEMyPaint(document.querySelector('#canvas'));
     }
